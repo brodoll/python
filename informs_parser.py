@@ -75,13 +75,14 @@ dList = []
 outlook = OutlookLib.OutlookLib()
 messages = outlook.get_messages('guilherme@eolica.com.br','Esteban','Sender','Esteban')
 for msg in messages:
-    # Cleaning / Formatting message
-    body = unicodedata.normalize('NFKD', msg.Body).encode('ascii','ignore')
-    body = body.splitlines()
-    body = filter(bool, body)
-    clnbody = [ v for v in body if not v.startswith(' ') ]
-    
-    classifier(clnbody,dList,keys)
+    if 'Rela' in msg.Subject:
+        # Cleaning / Formatting message
+        body = unicodedata.normalize('NFKD', msg.Body).encode('ascii','ignore')
+        body = body.splitlines()
+        body = filter(bool, body)
+        clnbody = [ v for v in body if not v.startswith(' ') ]
+        
+        classifier(clnbody,dList,keys)
 
 
 
