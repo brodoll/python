@@ -9,6 +9,8 @@ import unicodedata
 import OutlookLib
 import re
 import dateutil.parser as dparser
+import csv
+from operator import itemgetter
 
 
 def classifier(clnbody,dList,keys):
@@ -53,13 +55,21 @@ def classifier(clnbody,dList,keys):
                     #Turbine
                     aux = re.search('WTG(.*)AL', item)
                     wtg = aux.group(1).strip()
+                    nwtg = len(wtg.split(','))
                     
                     # Description
                     desc = item[idx1+4:].strip()
+                    desc = desc.replace('-','')
+                    desc = desc.replace('=','')
                     
                     # Writing to dictionary
-                    ipt = [data,date,wf,wtg,desc,cat]
-                    dList.append(dict(zip(keys,ipt)))
+                    if nwtg==1:
+                        ipt = [data,date,wf,wtg,desc,cat]
+                        dList.append(dict(zip(keys,ipt)))
+                    else:
+                        for turb in wtg.split(','):
+                            ipt = [data,date,wf,turb,desc,cat]
+                            dList.append(dict(zip(keys,ipt)))
                     
                 except:
                     checks = ['Sem','sem','Sen','sen','DDS','Visita','visita',\
@@ -78,7 +88,7 @@ def miverifier(list_of_lists, substring):
         if substring in item:
             count += 1
     return count
-            
+    
 # Dict keys (column headers of output file / db)
 keys = ['Data','Date','Wind Farm','WTG','Description','Category']
 dList = []
@@ -107,3 +117,8 @@ for msg in messages:
         else:
             classifier(clnbody,dList,keys)
 
+with open('C:\\test\\informs_output.csv', 'wb') as f:  # Just use 'w' mode in 3.x
+    w = csv.DictWriter(f, keys)
+    w.writeheader()
+    ord_dList = sorted(dList,key=itemgetter('Date'))
+    w.writerows(ord_dList)
