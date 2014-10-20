@@ -95,6 +95,7 @@ dList = []
 
 outlook = OutlookLib.OutlookLib()
 messages = outlook.get_messages('guilherme@eolica.com.br','Esteban','Sender','Esteban')
+#messages = outlook.get_messages('Guilherme Pedrosa','Caixa de entrada','Sender','Esteban')
 for msg in messages:
     if 'Rela' in msg.Subject:
         # Cleaning / Formatting message
