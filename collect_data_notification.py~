@@ -19,7 +19,6 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
     
     to_addrs = to_addr_list+cc_addr_list
     server = smtplib.SMTP(smtpserver)
-    server.starttls()
     server.login(login,password)
     server.sendmail(from_addr, to_addrs, message)
     server.quit()
@@ -53,4 +52,7 @@ sendemail(from_addr    = 'pms@eolica.com.br',
           message      =  message_Marrison,
           login        = 'pms@eolica.com.br',
           password     = pwd)
+
+
+
 

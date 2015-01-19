@@ -5,7 +5,10 @@ Created on Thu Apr 17 13:51:02 2014
 @author: Eolica
 """
 
-import csv, sqlite3, os
+import csv
+import os
+
+import sqlite3
 
 #indir = 'C:\\FORECAST_RAW_DATA\\'
 

@@ -94,7 +94,37 @@ keys = ['Data','Date','Wind Farm','WTG','Description','Category']
 dList = []
 
 outlook = OutlookLib.OutlookLib()
-messages = outlook.get_messages('guilherme@eolica.com.br','Esteban','Sender','Esteban')
+#messages = outlook.get_messages('guilherme@eolica.com.br','Esteban','Sender','Esteban')
+##messages = outlook.get_messages('Guilherme Pedrosa','Caixa de entrada','Sender','Esteban')
+#for msg in messages:
+#    if 'Rela' in msg.Subject:
+#        # Cleaning / Formatting message
+#        body = unicodedata.normalize('NFKD', msg.Body).encode('ascii','ignore')
+#        body = body.splitlines()
+#        body = filter(bool, body)
+#        clnbody = [ v for v in body if not v.startswith(' ') ]
+#        
+#        #Verify multiple informs in single e-mail
+#        ni = miverifier(clnbody,'Informe')
+#        
+#        if ni>1:
+#            # Divinding body message into different informs
+#            aux = [i for i, s in enumerate(clnbody) if 'Informe' in s]
+#            aux.append(len(clnbody))
+#            for j in range(len(aux)-1):
+#                singleclnbody = clnbody[aux[j]:aux[j+1]]
+#                classifier(singleclnbody,dList,keys)
+#                
+#        else:
+#            classifier(clnbody,dList,keys)
+#
+#with open('C:\\test\\informs_output.csv', 'wb') as f:  # Just use 'w' mode in 3.x
+#    w = csv.DictWriter(f, keys)
+#    w.writeheader()
+#    ord_dList = sorted(dList,key=itemgetter('Date'))
+#    w.writerows(ord_dList)
+
+messages = outlook.get_messages('Guilherme Pedrosa','Caixa de entrada','Sender','Esteban')
 for msg in messages:
     if 'Rela' in msg.Subject:
         # Cleaning / Formatting message
