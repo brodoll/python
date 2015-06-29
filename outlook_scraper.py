@@ -85,8 +85,10 @@ clipping_path = 'C:\\Clipping\\'
 #forecasts_messages = outlook.get_messages('pms@eolica.com.br','Caixa de Entrada','Sender','Meteologica')
 #for msg in forecasts_messages:
 #    save_attachments(msg,forecasts_path)
+    
+user = raw_input('Username: ')
 
-messages = outlook.get_messages('guilherme@eolica.com.br','Clipping','Subject','Di')
+messages = outlook.get_messages(user,'Clipping','Subject','Di')
 for msg in messages:
     print msg.Subject
     

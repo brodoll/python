@@ -7,13 +7,12 @@ Created on Thu Apr 17 13:51:02 2014
 
 import csv
 import os
-
 import sqlite3
 
 #indir = 'C:\\FORECAST_RAW_DATA\\'
 
-indir = 'C:\\Test\\Forecasts\\'
-db = 'C:\\FORECAST_RAW_DATA\\'
+indir = 'C:\\FORECAST_RAW_DATA\\' #'C:\\Test\\Forecasts\\'
+db = 'C:\\Database\\'
 settings={}
 
 class sqlite:

@@ -21,7 +21,7 @@ def ColumnArgs(coltag,vartype):
     return colarg
     
 def DropTables(conn,tbls,park):
-    database="C:\\FORECAST_RAW_DATA\\" + park + ".db"
+    database="C:\\Database\\" + park + ".db"
     conn = sqlite3.connect( database )
     conn.text_factory = str #bugger 8-bit bytestrings
     cur = conn.cursor()
@@ -46,7 +46,7 @@ def forecastupdate(files):
             park = 'AL2'
         
         # Defining db file location, initializing connection and cursor
-        database="C:\\FORECAST_RAW_DATA\\" + park + ".db"
+        database="C:\\Database\\" + park + ".db"
         conn = sqlite3.connect( database )
         conn.text_factory = str #bugger 8-bit bytestrings
         cur = conn.cursor()
@@ -110,7 +110,7 @@ def forecastupdate(files):
 ####### Begginin of the update process ########
 
 # Raw data location
-raw_data_folder = "C:\\Test\\Forecasts\\"
+raw_data_folder = "C:\\FORECAST_RAW_DATA\\"
 
 # Retrieving file names        
 for root, dirs, filenames in os.walk(raw_data_folder):
